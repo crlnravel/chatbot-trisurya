@@ -146,4 +146,6 @@ cover/
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow
 __pypackages__/
 
-
+indobert-base-p1-finetuned_config
+indobert-base-p1-finetuned_tokenizer
+indobert-base-p1-finetuned_trainer
