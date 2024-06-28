@@ -54,17 +54,18 @@ fallback_prompt = {
     'law': law_llm_format,
 }
 
-clf_config = AutoConfig.from_pretrained(Config.CLF_CONFIG_PATH)
-clf_tokenizer = AutoTokenizer.from_pretrained(Config.CLF_TOKENIZER_PATH)
-clf_model = AutoModelForSequenceClassification.from_pretrained(Config.CLF_TRAINER_PATH, config=clf_config)
+
+clf_config = AutoConfig.from_pretrained('indobert-base-p1-finetuned_config')
+clf_tokenizer = AutoTokenizer.from_pretrained('indobert-base-p1-finetuned_tokenizer')
+clf_model = AutoModelForSequenceClassification.from_pretrained('dardrich/indobert-base-p1-finetuned-trainer', config=clf_config)
 
 classifier = IndoBertClassifier(
     clf_tokenizer,
     clf_model
 )
 
-summ_tokenizer = T5Tokenizer.from_pretrained(Config.SUMM_MODEL_NAME)
-summ_model = T5ForConditionalGeneration.from_pretrained(Config.SUMM_MODEL_NAME)
+summ_tokenizer = T5Tokenizer.from_pretrained("panggi/t5-small-indonesian-summarization-cased")
+summ_model = T5ForConditionalGeneration.from_pretrained("panggi/t5-small-indonesian-summarization-cased")
 
 summarizer = T5Summarizer(
     summ_tokenizer,
